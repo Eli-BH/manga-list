@@ -3,9 +3,11 @@ import { useState } from "react";
 import Jumbotron from "react-bootstrap/Jumbotron";
 import MangaListForm from "./components/MangaListForm";
 import MangaList from "./components/MangaList";
+import MangaSearchForm from "./components/MangaSearchForm";
 
 const App = () => {
   const [manga, setManga] = useState([]);
+  const [term, setTerm] = useState("");
 
   const addManga = (text) => {
     const newList = [...manga, { text, complete: false }];
@@ -16,8 +18,8 @@ const App = () => {
   const deleteManga = (id) => {
     const newList = [...manga];
     newList.splice(id, 1);
-    //could try newList.map((id) => id !== index)
     setManga(newList);
+    //could try newList.map((id) => id !== index)
   };
 
   const completeManga = (index) => {
@@ -26,13 +28,22 @@ const App = () => {
     setManga(newList);
   };
 
+  const searchFilter = (text) => {
+    setTerm(text);
+  };
+
+  let sTerm = manga.filter((txt) => txt.text.includes(term));
+
   return (
     <div className="container">
       <Jumbotron>
         <h1>Manga List</h1>
       </Jumbotron>
+
+      <MangaSearchForm saveTerm={searchFilter} />
+
       <MangaList
-        mangas={manga}
+        mangas={term.length > 0 ? sTerm : manga}
         deleteManga={deleteManga}
         completeManga={completeManga}
       />

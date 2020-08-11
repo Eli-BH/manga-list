@@ -13,7 +13,7 @@ const MangaList = ({ mangas, deleteManga, completeManga }) => {
             complete
           </Button>
           <div style={{ textDecoration: manga.complete ? "line-through" : "" }}>
-            {manga.text}
+            {manga.text.trim()}
           </div>
 
           <span></span>
