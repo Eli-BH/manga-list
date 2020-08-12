@@ -42,9 +42,11 @@ const App = () => {
 
   return (
     <div className="container">
-      <Jumbotron>
+      <div className="jumbotron">
         <h1>Manga List</h1>
-      </Jumbotron>
+        <hr className="my-4" />
+        <p>A simple list to save your manga, it can also be used for books</p>
+      </div>
 
       <MangaSearchForm saveTerm={searchFilter} />
 
