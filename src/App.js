@@ -10,7 +10,7 @@ const App = () => {
   const [term, setTerm] = useState("");
 
   const addManga = (text) => {
-    const newList = [...manga, { text, complete: false }];
+    const newList = [...manga, { text, complete: false, chapter: 1 }];
     setManga(newList);
     // console.warn(entry); test
   };
@@ -24,7 +24,13 @@ const App = () => {
 
   const completeManga = (index) => {
     const newList = [...manga];
-    newList[index].complete = true;
+    newList[index].complete = !newList[index].complete;
+    setManga(newList);
+  };
+
+  const updateChapter = (index, chpt) => {
+    const newList = [...manga];
+    newList[index].chapter = chpt;
     setManga(newList);
   };
 
@@ -46,6 +52,7 @@ const App = () => {
         mangas={term.length > 0 ? sTerm : manga}
         deleteManga={deleteManga}
         completeManga={completeManga}
+        mangaChapter={updateChapter}
       />
       <MangaListForm addManga={addManga} />
       {console.log(manga)}

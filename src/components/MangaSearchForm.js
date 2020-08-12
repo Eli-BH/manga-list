@@ -6,6 +6,7 @@ const MangaSearchForm = ({ saveTerm }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    console.log("hello");
     saveTerm(term);
     setTerm("");
   };
