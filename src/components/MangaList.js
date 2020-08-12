@@ -12,7 +12,6 @@ const MangaList = ({ mangas, deleteManga, completeManga, mangaChapter }) => {
     event.preventDefault();
     mangaChapter(index, chapter);
     setChapter("");
-    alert(index);
   };
 
   return (
